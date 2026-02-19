@@ -81,7 +81,7 @@ Components/Pages/Home.razor
 1. Clonar el repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repositorio.git
+git clone https://github.com/JuanCastro6208/Prueba_Tecnica_NET_Web.git
 ```
 
 2. Abrir el proyecto en Visual Studio 2022 o superior.
