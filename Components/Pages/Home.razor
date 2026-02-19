@@ -1,0 +1,46 @@
+@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>Saludo App</PageTitle>
+
+<h3>Aplicacion de Saludo</h3>
+
+<div class="mb-3">
+    <label for="nombre" class="form-label">Ingresa tu nombre:</label>
+    <input id="nombre" type="text" class="form-control" @bind="nombre" placeholder="Escribe tu nombre..." />
+</div>
+
+<button class="btn btn-primary" @onclick="Saludar">Saludar</button>
+
+@if (!string.IsNullOrEmpty(mensajeError))
+{
+    <div class="alert alert-warning mt-3">@mensajeError</div>
+}
+
+@if (!string.IsNullOrEmpty(mensaje))
+{
+    <h4 class="mt-3" style="color: #2e86de;">@mensaje</h4>
+    <p class="text-muted">Has saludado @contadorClics @(contadorClics == 1 ? "vez" : "veces").</p>
+}
+
+@code {
+    private string nombre = string.Empty;
+    private string mensaje = string.Empty;
+    private string mensajeError = string.Empty;
+    private int contadorClics = 0;
+
+    private void Saludar()
+    {
+        mensajeError = string.Empty;
+        mensaje = string.Empty;
+
+        if (string.IsNullOrWhiteSpace(nombre))
+        {
+            mensajeError = "Por favor, ingresa un nombre valido.";
+            return;
+        }
+
+        contadorClics++;
+        mensaje = $"Hola, {nombre.Trim()}!";
+    }
+}
